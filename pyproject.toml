@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "FileTreck BOt"
+version = "0.1.0"
+description = "Upload file to ftp server"
+authors = ["IAmIrina <irina.vl.kiseleva@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pydantic = {extras = ["dotenv"], version = "^1.10.7"}
+requests = "^2.28.2"
+boto3 = "^1.26.104"
+
+[tool.poetry.dev-dependencies]
+flake8 = "^6.0.0"
+autopep8 = "^2.0.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
