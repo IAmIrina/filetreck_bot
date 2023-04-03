@@ -1,13 +1,13 @@
 import json
 import logging
 from http import HTTPStatus
+from time import sleep
+
+import boto3
 
 from config import settings
 from core.handlers import MSGHandler
 from lib import ftp, telegram
-import boto3
-
-from time import sleep
 
 logger = logging.getLogger(__name__)
 
