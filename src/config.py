@@ -43,8 +43,10 @@ class Settings(BaseSettings):
     ftp = FTP()
     queue = Queue()
     max_file_size: int = 1024**10
+    check_queue_interval: int = 10
 
 
 settings = Settings()
 
 logging.config.dictConfig(LOGGING)
+logging.getLogger('botocore').setLevel(logging.CRITICAL)

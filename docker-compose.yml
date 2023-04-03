@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  ftp-telegram-downloader:
+    container_name: ftp-tlg-downloader
+    build: .
+    restart: unless-stopped
+    env_file:
+       - .env
+
+   

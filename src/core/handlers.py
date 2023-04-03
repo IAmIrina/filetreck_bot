@@ -42,6 +42,7 @@ class MSGHandler():
                 'The attachment file size too big: %s GB',
                 message.attachment.file_size / 1024**3,
             )
+            
             self.bot.send_message(
                 chat_id=message.from_.id,
                 **schemas.TLGResponse(

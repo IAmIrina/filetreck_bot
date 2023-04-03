@@ -9,6 +9,7 @@ class MediaType(Enum):
     video = '.mov'
     document = ''
     photo = '.jpg'
+    video_note = '.mp4'
 
 
 class From(BaseModel):
@@ -37,6 +38,7 @@ class Message(BaseModel):
     video: Attachment = None
     document: Attachment = None
     photo: t.List[Attachment] = []
+    video_note: Attachment = None
 
     @property
     def user(self):
@@ -46,7 +48,9 @@ class Message(BaseModel):
     def attachment(self):
         for media in MediaType:
             attch = getattr(self, media.name)
-            if isinstance(attch, list):
+            if not attch:
+                continue
+            elif isinstance(attch, list):
                 return attch[-1]
             elif isinstance(attch, Attachment):
                 return attch

@@ -13,6 +13,7 @@ class FTPClient():
 
     def ftp_connect(self):
         ftp = FTP()
+        ftp.set_pasv(True)
         ftp.connect(self.server, self.port)
         ftp.login(user=self.user, passwd=self.passwrd)
         return ftp
@@ -25,8 +26,8 @@ class FTPClient():
 
     def upload(self, path: str, filename: str, content: bytes):
         try:
-
             ftp = self.ftp_connect()
+
             ftp.cwd(self.folder)
             self.change_dir(ftp, path)
             ftp.storbinary(f'STOR {filename}', content)

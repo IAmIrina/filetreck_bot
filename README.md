@@ -1,8 +1,11 @@
-Телеграмм бот
+# Telegram bot backend to download incoming attachments to FTP server. # 
 
-Сохраняет полученные ботом файлы на FTP.
+Settings in .env.example file.
 
-Используется Serverless Yandex cloud functions и Queue.
+Use Serverless Yandex Cloed Queue (like AWS) to implement message brocker for storing Telegram API messages before loading to FTP.
 
-Точка входа для функции очереди to_queue:handler
-Точка входа для триггера main:trigger_handler
+Enter point for storing messages to queue - to_queue.handler
+Enter point for the loading part:
+- main.trigger_handler - if Ya Cloud Queue Trigger is used
+- main.cloud_function_handler - if direct message sending (without queue) 
+- main.process_message_queue - if the loader retrieves messages from the queue itself 
